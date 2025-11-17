@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+ <head>
+  <title>QEMU virtio device support</title>
+  <meta charset='utf-8'>
+  <style>
+html {
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+
+data:hover::after {
+  content: " (ID " attr(value) ")";
+  font-size: 0.7em;
+}
+
+table {
+  table-layout: fixed;
+  width: 90%;
+  margin: 10px auto;
+  border-collapse: collapse;
+  border-top: 1px solid #999999;
+  border-bottom: 1px solid #999999;
+}
+
+th,
+td {
+  vertical-align: top;
+  padding: 0.6em;
+}
+
+tr {
+  text-align: left;
+}
+
+tr :nth-child(2),
+tr :nth-child(3) {
+  width: 15%;
+}
+
+tr :nth-child(1),
+tr :nth-child(4) {
+  width: 15%;
+}
+
+tfoot {
+  border-top: 1px solid #999999;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #eeeeee;
+}
+
+caption {
+  padding: 1em;
+  font-style: italic;
+  caption-side: bottom;
+  letter-spacing: 1px;
+}
+
+  </style>
+  <script>
+  </script>
+ </head>
+ <body>
+ 
+<table>
+<thead>
+<tr><th>device                                                           </th><th>standardized in                                                                          </th><th>QEMU  </th><th>QEMU with vhost-user backends  </th><th>QEMU/KVM with Linux kernel vhost-accelerated devices  </th></tr>
+</thead>
+<tbody>
+<tr><td><data value="1"><code title="ID: 1">virtio-net</code></data>     </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.0/virtio-v1.0.html">VIRTIO-v1.0</a></td><td>✅     </td><td>❌                              </td><td>✅                                                     </td></tr>
+<tr><td><data value="2"><code title="ID: 2">virtio-blk</code></data>     </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.0/virtio-v1.0.html">VIRTIO-v1.0</a></td><td>✅     </td><td>❌                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="3"><code title="ID: 3">virtio-console</code></data> </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.0/virtio-v1.0.html">VIRTIO-v1.0</a></td><td>✅     </td><td>✅                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="4"><code title="ID: 4">virtio-rng</code></data>     </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.0/virtio-v1.0.html">VIRTIO-v1.0</a></td><td>✅     </td><td>✅                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="5"><code title="ID: 5">virtio-balloon</code></data> </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.0/virtio-v1.0.html">VIRTIO-v1.0</a></td><td>✅     </td><td>❌                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="6"><code title="ID: 6">virtio-iomem</code></data>   </td><td>❌                                                                                        </td><td>❌     </td><td>❌                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="8"><code title="ID: 8">virtio-scsi</code></data>    </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.0/virtio-v1.0.html">VIRTIO-v1.0</a></td><td>✅     </td><td>✅                              </td><td>✅                                                     </td></tr>
+<tr><td><data value="9"><code title="ID: 9">virtio-9p</code></data>      </td><td>❌                                                                                        </td><td>✅     </td><td>❌                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="16"><code title="ID: 16">virtio-gpu</code></data>   </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.1/virtio-v1.1.html">VIRTIO-v1.1</a></td><td>✅     </td><td>✅                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="17"><code title="ID: 17">virtio-rtc</code></data>   </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.4/virtio-v1.4.html">VIRTIO-v1.4</a></td><td>❌     </td><td>❌                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="18"><code title="ID: 18">virtio-input</code></data> </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.1/virtio-v1.1.html">VIRTIO-v1.1</a></td><td>✅     </td><td>✅                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="19"><code title="ID: 19">virtio-vsock</code></data> </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.1/virtio-v1.1.html">VIRTIO-v1.1</a></td><td>❌     </td><td>✅                              </td><td>✅                                                     </td></tr>
+<tr><td><data value="20"><code title="ID: 20">virtio-crypto</code></data></td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.1/virtio-v1.1.html">VIRTIO-v1.1</a></td><td>✅     </td><td>❌                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="23"><code title="ID: 23">virtio-iommu</code></data> </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>✅     </td><td>❌                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="24"><code title="ID: 24">virtio-mem</code></data>   </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>❌     </td><td>❌                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="25"><code title="ID: 25">virtio-snd</code></data>   </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>✅     </td><td>✅                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="26"><code title="ID: 26">virtio-fs</code></data>    </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>❌     </td><td>✅                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="27"><code title="ID: 27">virtio-pmem</code></data>  </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>✅     </td><td>❌                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="28"><code title="ID: 28">virtio-rpmb</code></data>  </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>❌     </td><td>❌                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="32"><code title="ID: 32">virtio-scmi</code></data>  </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>❌     </td><td>✅                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="34"><code title="ID: 34">virtio-i2c</code></data>   </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>❌     </td><td>✅                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="36"><code title="ID: 36">virtio-can</code></data>   </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.4/virtio-v1.4.html">VIRTIO-v1.4</a></td><td>❌     </td><td>✅                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="41"><code title="ID: 41">virtio-gpio</code></data>  </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>❌     </td><td>✅                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="43"><code title="ID: 43">virtio-camera</code></data></td><td>❌                                                                                        </td><td>❌     </td><td>❌                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="45"><code title="ID: 45">virtio-spi</code></data>   </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.4/virtio-v1.4.html">VIRTIO-v1.4</a></td><td>❌     </td><td>✅                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="48"><code title="ID: 48">virtio-media</code></data> </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.4/virtio-v1.4.html">VIRTIO-v1.4</a></td><td>❌     </td><td>❌                              </td><td>❌                                                     </td></tr>
+<tr><td><data value="49"><code title="ID: 49">virtio-usb</code></data>   </td><td>❌                                                                                        </td><td>❌     </td><td>❌                              </td><td>❌                                                     </td></tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr><th>device                                                           </th><th>standardized in                                                                          </th><th><a href="https://www.kernel.org/">Linux</a>  </th><th><a href="https://www.freebsd.org/">FreeBSD</a>  </th><th><a href="https://www.netbsd.org/">NetBSD</a>  </th><th><a href="https://www.redox-os.org/">Redox OS</a>  </th><th><a href="https://github.com/virtio-win/kvm-guest-drivers-windows" title="With paravirtualized drivers for QEMU/KVM">Microsoft Windows</a> (*)  </th></tr>
+</thead>
+<tbody>
+<tr><td><data value="1"><code title="ID: 1">virtio-net</code></data>     </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.0/virtio-v1.0.html">VIRTIO-v1.0</a></td><td>✅                                            </td><td>✅                                               </td><td>✅                                             </td><td>✅                                                 </td><td>✅                                                                                                                                              </td></tr>
+<tr><td><data value="2"><code title="ID: 2">virtio-blk</code></data>     </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.0/virtio-v1.0.html">VIRTIO-v1.0</a></td><td>✅                                            </td><td>✅                                               </td><td>✅                                             </td><td>✅                                                 </td><td>✅                                                                                                                                              </td></tr>
+<tr><td><data value="3"><code title="ID: 3">virtio-console</code></data> </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.0/virtio-v1.0.html">VIRTIO-v1.0</a></td><td>✅                                            </td><td>✅                                               </td><td>✅                                             </td><td>❌                                                 </td><td>✅                                                                                                                                              </td></tr>
+<tr><td><data value="4"><code title="ID: 4">virtio-rng</code></data>     </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.0/virtio-v1.0.html">VIRTIO-v1.0</a></td><td>✅                                            </td><td>✅                                               </td><td>✅                                             </td><td>❌                                                 </td><td>✅                                                                                                                                              </td></tr>
+<tr><td><data value="5"><code title="ID: 5">virtio-balloon</code></data> </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.0/virtio-v1.0.html">VIRTIO-v1.0</a></td><td>✅                                            </td><td>❌                                               </td><td>✅                                             </td><td>❌                                                 </td><td>✅                                                                                                                                              </td></tr>
+<tr><td><data value="6"><code title="ID: 6">virtio-iomem</code></data>   </td><td>❌                                                                                        </td><td>❌                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>❌                                                                                                                                              </td></tr>
+<tr><td><data value="8"><code title="ID: 8">virtio-scsi</code></data>    </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.0/virtio-v1.0.html">VIRTIO-v1.0</a></td><td>✅                                            </td><td>✅                                               </td><td>✅                                             </td><td>❌                                                 </td><td>✅                                                                                                                                              </td></tr>
+<tr><td><data value="9"><code title="ID: 9">virtio-9p</code></data>      </td><td>❌                                                                                        </td><td>✅                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>❌                                                                                                                                              </td></tr>
+<tr><td><data value="16"><code title="ID: 16">virtio-gpu</code></data>   </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.1/virtio-v1.1.html">VIRTIO-v1.1</a></td><td>✅                                            </td><td>✅                                               </td><td>❌                                             </td><td>✅                                                 </td><td>✅                                                                                                                                              </td></tr>
+<tr><td><data value="17"><code title="ID: 17">virtio-rtc</code></data>   </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.4/virtio-v1.4.html">VIRTIO-v1.4</a></td><td>✅                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>❌                                                                                                                                              </td></tr>
+<tr><td><data value="18"><code title="ID: 18">virtio-input</code></data> </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.1/virtio-v1.1.html">VIRTIO-v1.1</a></td><td>✅                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>✅                                                                                                                                              </td></tr>
+<tr><td><data value="19"><code title="ID: 19">virtio-vsock</code></data> </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.1/virtio-v1.1.html">VIRTIO-v1.1</a></td><td>✅                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>❌                                                                                                                                              </td></tr>
+<tr><td><data value="20"><code title="ID: 20">virtio-crypto</code></data></td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.1/virtio-v1.1.html">VIRTIO-v1.1</a></td><td>✅                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>❌                                                                                                                                              </td></tr>
+<tr><td><data value="23"><code title="ID: 23">virtio-iommu</code></data> </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>✅                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>❌                                                                                                                                              </td></tr>
+<tr><td><data value="24"><code title="ID: 24">virtio-mem</code></data>   </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>✅                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>✅                                                                                                                                              </td></tr>
+<tr><td><data value="25"><code title="ID: 25">virtio-snd</code></data>   </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>✅                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>❌                                                                                                                                              </td></tr>
+<tr><td><data value="26"><code title="ID: 26">virtio-fs</code></data>    </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>✅                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>✅                                                                                                                                              </td></tr>
+<tr><td><data value="27"><code title="ID: 27">virtio-pmem</code></data>  </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>✅                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>❌                                                                                                                                              </td></tr>
+<tr><td><data value="28"><code title="ID: 28">virtio-rpmb</code></data>  </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>❌                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>❌                                                                                                                                              </td></tr>
+<tr><td><data value="32"><code title="ID: 32">virtio-scmi</code></data>  </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>✅                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>❌                                                                                                                                              </td></tr>
+<tr><td><data value="34"><code title="ID: 34">virtio-i2c</code></data>   </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>✅                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>❌                                                                                                                                              </td></tr>
+<tr><td><data value="36"><code title="ID: 36">virtio-can</code></data>   </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.4/virtio-v1.4.html">VIRTIO-v1.4</a></td><td>❌                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>❌                                                                                                                                              </td></tr>
+<tr><td><data value="41"><code title="ID: 41">virtio-gpio</code></data>  </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.2/virtio-v1.2.html">VIRTIO-v1.2</a></td><td>✅                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>❌                                                                                                                                              </td></tr>
+<tr><td><data value="43"><code title="ID: 43">virtio-camera</code></data></td><td>❌                                                                                        </td><td>❌                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>❌                                                                                                                                              </td></tr>
+<tr><td><data value="45"><code title="ID: 45">virtio-spi</code></data>   </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.4/virtio-v1.4.html">VIRTIO-v1.4</a></td><td>❌                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>❌                                                                                                                                              </td></tr>
+<tr><td><data value="48"><code title="ID: 48">virtio-media</code></data> </td><td><a href="https://docs.oasis-open.org/virtio/virtio/v1.4/virtio-v1.4.html">VIRTIO-v1.4</a></td><td>❌                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>❌                                                                                                                                              </td></tr>
+<tr><td><data value="49"><code title="ID: 49">virtio-usb</code></data>   </td><td>❌                                                                                        </td><td>❌                                            </td><td>❌                                               </td><td>❌                                             </td><td>❌                                                 </td><td>❌                                                                                                                                              </td></tr>
+</tbody>
+</table>
+
+ </body>
+</html>
+
