@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS virtio_device_backend(
   id INTEGER NOT NULL PRIMARY KEY UNIQUE,
   device_id INTEGER NOT NULL REFERENCES "virtio_device" ("id") ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
   software TEXT NOT NULL REFERENCES "virtualization_stack" ("short_name") ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
+  url TEXT,
   additional_requirements TEXT,
   notes TEXT,
   introduced_in_version TEXT,
@@ -168,8 +169,8 @@ INSERT INTO operating_system(short_name, name, url, notes) VALUES
 
 INSERT INTO virtualization_stack(short_name, name, url) VALUES
 ('qemu', 'QEMU', 'https://www.qemu.org/'),
-('qemu-with-vhost-user', 'QEMU with vhost-user backends', 'https://www.qemu.org/'),
-('linux-vhost', 'QEMU/KVM with Linux kernel vhost-accelerated devices', 'https://www.kernel.org/')
+('vhost-user', 'vhost-user protocol', 'https://www.qemu.org/'),
+('linux-vhost', 'Linux kernel vhost-accelerated', 'https://www.kernel.org/')
 ;
 
 INSERT INTO virtio_transport_driver(transport, software) VALUES
@@ -268,25 +269,27 @@ INSERT INTO virtio_device_backend(device_id, software) VALUES
 (27, 'qemu')
 ;
 
-INSERT INTO virtio_device_backend(device_id, software) VALUES 
-(3, 'qemu-with-vhost-user'),
-(4, 'qemu-with-vhost-user'),
-(8, 'qemu-with-vhost-user'),
-(16, 'qemu-with-vhost-user'),
-(18, 'qemu-with-vhost-user'),
-(19, 'qemu-with-vhost-user'),
-(25, 'qemu-with-vhost-user'),
-(26, 'qemu-with-vhost-user'),
-(32, 'qemu-with-vhost-user'),
-(34, 'qemu-with-vhost-user'),
-(36, 'qemu-with-vhost-user'),
-(41, 'qemu-with-vhost-user'),
-(45, 'qemu-with-vhost-user')
+INSERT INTO virtio_device_backend(device_id, software, url) VALUES 
+(2, 'vhost-user', 'https://www.qemu.org/docs/master/tools/qemu-storage-daemon.html'),
+(3, 'vhost-user', 'https://github.com/rust-vmm/vhost-device/tree/main/vhost-device-console'),
+(4, 'vhost-user', 'https://github.com/rust-vmm/vhost-device/tree/main/vhost-device-rng'),
+(8, 'vhost-user', 'https://github.com/rust-vmm/vhost-device/tree/main/vhost-device-scsi'),
+(16, 'vhost-user', 'https://github.com/rust-vmm/vhost-device/tree/main/vhost-device-gpu'),
+(17, 'vhost-user', 'https://github.com/rust-vmm/vhost-device/tree/main/vhost-device-rtc'),
+(18, 'vhost-user', 'https://github.com/rust-vmm/vhost-device/tree/main/vhost-device-input'),
+(19, 'vhost-user', 'https://github.com/rust-vmm/vhost-device/tree/main/vhost-device-vsock'),
+(25, 'vhost-user', 'https://github.com/rust-vmm/vhost-device/tree/main/vhost-device-sound'),
+(26, 'vhost-user', 'https://virtio-fs.gitlab.io/'),
+(32, 'vhost-user', 'https://github.com/rust-vmm/vhost-device/tree/main/vhost-device-scmi'),
+(34, 'vhost-user', 'https://github.com/rust-vmm/vhost-device/tree/main/vhost-device-i2c'),
+(36, 'vhost-user', 'https://github.com/rust-vmm/vhost-device/tree/main/vhost-device-can'),
+(41, 'vhost-user', 'https://github.com/rust-vmm/vhost-device/tree/main/vhost-device-gpio'),
+(45, 'vhost-user', 'https://github.com/rust-vmm/vhost-device/tree/main/vhost-device-spi')
 ;
 
 INSERT INTO virtio_device_backend(device_id, software, notes) VALUES
-(1, 'linux-vhost', 'vhost_net'),
-(8, 'linux-vhost', 'vhost_scsi'),
-(19, 'linux-vhost', 'vhost_vsock')
+(1, 'linux-vhost', 'vhost_net: drivers/vhost/net.c'),
+(8, 'linux-vhost', 'vhost_scsi: drivers/vhost/scsi.c'),
+(19, 'linux-vhost', 'vhost_vsock: drivers/vhost/vsock.c')
 ;
 
